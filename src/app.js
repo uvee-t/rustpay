@@ -7,6 +7,9 @@ import { asyncHandler } from './utils/asyncHandler.js';
 import { AppError } from './utils/errors.js';
 import helmet from 'helmet';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
+
+import paymentRoutes from './routes/payment.routes.js';
 
 const app = express();
 app.use(helmet());
@@ -20,14 +23,17 @@ app.use(
     }),
 );
 
-app.use(express.json({ limit: '4kb' }));
-app.use(express.urlencoded({ extended: true, limit: '4kb' }));
+app.use(express.json({ limit: '20kb' }));
+app.use(express.urlencoded({ extended: true, limit: '20kb' }));
+app.use(cookieParser());
 
 app.get('/health', (req, res) => {
     res.status(200).json({
         status: 'ok',
     });
 });
+
+app.use('/api/v1/payments', paymentRoutes);
 
 app.use(notFound);
 app.use(errorHandler);

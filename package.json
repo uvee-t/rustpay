@@ -25,21 +25,25 @@
         "test": "tests"
     },
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "dev": "node --watch src/server.js",
+        "start": "node src/server.js",
+        "test": "node --test",
+        "migrate": "node-pg-migrate up",
+        "migrate:down": "node-pg-migrate down",
+        "migrate:create": "node-pg-migrate create"
     },
     "dependencies": {
         "bullmq": "^6.3.8",
+        "cookie-parser": "^1.4.7",
         "cors": "^2.8.6",
         "dotenv": "^18.0.3",
         "express": "^5.2.1",
         "helmet": "^8.3.0",
         "ioredis": "^6.0.0",
+        "node-pg-migrate": "^9.0.0",
         "pg": "^8.23.0",
         "pino": "^10.3.1",
         "pino-http": "^11.0.0",
         "zod": "^4.6.5"
-    },
-    "devDependencies": {
-        "nodemon": "^3.1.14"
     }
 }
