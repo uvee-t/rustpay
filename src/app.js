@@ -23,6 +23,12 @@ app.use(
 app.use(express.json({ limit: '4kb' }));
 app.use(express.urlencoded({ extended: true, limit: '4kb' }));
 
+app.get('/health', (req, res) => {
+    res.status(200).json({
+        status: 'ok',
+    });
+});
+
 app.use(notFound);
 app.use(errorHandler);
 

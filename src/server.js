@@ -32,7 +32,6 @@ const startServer = async () => {
                         logger.info('Application shut down gracefully');
                     } catch (error) {
                         logger.error({ error }, 'Error during shutdown');
-
                         process.exit(1);
                     }
                 });
@@ -42,7 +41,6 @@ const startServer = async () => {
         });
     } catch (error) {
         logger.fatal({ error }, 'Failed to start application');
-
         process.exit(1);
     }
 };
