@@ -13,4 +13,9 @@ const PAYMENT_METHOD = Object.freeze({
     WALLET: 'wallet',
 });
 
-export { PAYMENT_STATUS, PAYMENT_METHOD };
+const IDEMPOTENCY_STATUS = Object.freeze({
+    PROCESSING: 'processing',
+    COMPLETED: 'completed',
+});
+
+export { PAYMENT_STATUS, PAYMENT_METHOD, IDEMPOTENCY_STATUS };

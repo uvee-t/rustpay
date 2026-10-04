@@ -1,5 +1,6 @@
 import { postgresPool } from '../config/database.js';
 import { TABLES } from '../constants/tables.js';
+import { IDEMPOTENCY_STATUS } from '../constants/payment.js';
 
 const findIdempotencyKey = async ({ merchantId, idempotencyKey }) => {
     const query = `
@@ -88,7 +89,7 @@ const completeIdempotencyKey = async ({ id, paymentId, responseStatus, responseB
             expires_at
     `;
 
-    const values = [id, paymentId, responseStatus, responseBody, 'completed'];
+    const values = [id, paymentId, responseStatus, responseBody, IDEMPOTENCY_STATUS.COMPLETED];
 
     const result = await postgresPool.query(query, values);
 
